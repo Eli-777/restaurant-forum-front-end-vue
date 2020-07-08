@@ -15,6 +15,7 @@
       <div class="col-md-6">
         <!-- 最新評論 NewestComments-->
         <h3>最新評論</h3>
+        <NewestComments :comments="comments"/>
       </div>
     </div>
   </div>
@@ -24,6 +25,7 @@
 <script>
 import NavTabs from './../components/Navtabs'
 import NewestRestaurants from './../components/NewRestaurants'
+import NewestComments from './../components/NewestComments'
 
 const dummyData = {
   'restaurants': [
@@ -534,7 +536,8 @@ const dummyData = {
 export default {
   components: {
     NavTabs,
-    NewestRestaurants
+    NewestRestaurants,
+    NewestComments
   },
   data () {
     return {
@@ -548,7 +551,8 @@ export default {
   methods: {
     fetchFeeds () {
       this.restaurants = dummyData.restaurants
-      this.comments = dummyData.comments
+      // 餐廳名稱或沒有留言，其中一個沒有就不會被顯示
+      this.comments = dummyData.comments.filter( comment => comment.Restaurant && comment.text )
     }
   }
 }
