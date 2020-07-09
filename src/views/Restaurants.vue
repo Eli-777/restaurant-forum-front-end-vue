@@ -17,7 +17,7 @@
     <RestaurantsPagination
       v-if="totalPage > 1"
       :category-id="categoryId"
-      :current-page="currenPage"
+      :current-page="currentPage"
       :total-page="totalPage"
     />
   </div>
