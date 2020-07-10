@@ -15,8 +15,8 @@
         <h2>{{user.name}}</h2>
         <span class="badge badge-secondary">追蹤人數：{{user.FollowerCount}}</span>
         <p class="mt-3">
-          <button type="button" v-if="user.isFollowed" class="btn btn-danger">取消追蹤</button>
-          <button type="button" v-else class="btn btn-primary">追蹤</button>
+          <button type="button" v-if="user.isFollowed" class="btn btn-danger" @click.stop.prevent="deleteFollow(user.id)">取消追蹤</button>
+          <button type="button" v-else class="btn btn-primary" @click.stop.prevent="addFollow(user.id)">追蹤</button>
         </p>
       </div>
     </div>
@@ -1325,6 +1325,20 @@ export default {
   methods: {
     fetchUsers () {
       this.users = dummyData.users
+    },
+    addFollow (userId) {
+      this.users.forEach( user => {
+        if(user.id === userId) {
+          user.isFollowed = true;
+        }
+      } )
+    },
+    deleteFollow (userId) {
+      this.users.map( user => {
+        if(user.id === userId) {
+          user.isFollowed = false;
+        }
+      })
     }
   },
   filters: {
