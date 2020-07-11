@@ -17,7 +17,7 @@
 export default {
   props: {
     followers: {
-      type: Object,
+      type: Array,
       required: true
     }
   }

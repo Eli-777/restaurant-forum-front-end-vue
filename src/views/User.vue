@@ -2,7 +2,7 @@
   <div class="balbum py-5 bg-light">
     <div class="container">
       <div class="card mb-3">
-        <!--  UserProfileCard-->
+        <!--  UserProfileCard -->
         <UserProfileCard 
           :profile="profile"
           :initial-isFollowed="isFollowed"
@@ -20,8 +20,12 @@
             :followers="profile.Followers"
           />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-8">
           <!-- UserCommentsCard -->
+          <UserCommentsCard 
+            :comments="profile.Comments"
+          />
+          <br />
           <!-- UserFavoritedRestaurantsCard -->
         </div>
       </div>
@@ -33,6 +37,7 @@
 import UserProfileCard from './../components/UserProfileCard'
 import UserFollowingsCard from './../components/UserFollowingsCard'
 import UserFollowersCard from './../components/UserFollowersCard'
+import UserCommentsCard from './../components/UserCommentsCard'
 
 const dummyData = {
   'profile': {
@@ -1213,7 +1218,8 @@ export default {
   components:{
     UserProfileCard,
     UserFollowingsCard,
-    UserFollowersCard
+    UserFollowersCard,
+    UserCommentsCard
   },
   data () {
     return {
