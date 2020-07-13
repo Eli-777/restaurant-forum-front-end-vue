@@ -131,6 +131,20 @@ const dummyData = {
 };
 
 export default {
+  props: {
+    initialRestaurant: {
+      type: Object,
+      default: () => ({
+        name: '',
+        categoryId: '',
+        tel: '',
+        address: '',
+        description: '',
+        image: '',
+        openingHours: '',
+      })
+    }
+  },
   data() {
     return {
       restaurant: {
@@ -147,6 +161,10 @@ export default {
   },
   created() {
     this.fetchCategories();
+    this.restaurant = {
+      ...this.restaurant,  // 預設值（空白）
+      ...this.initialRestaurant // 父層資料傳來的資料
+    }
   },
   methods: {
     fetchCategories() {
