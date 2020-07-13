@@ -21,9 +21,20 @@
             <strong>{{profile.Followers.length}}</strong> followers (追隨者)
           </li>
         </ul>
+        <template v-if="profile.isAdmin">
+          <router-link
+            :to="{ name: 'user-edit', params: { id: profile.id } }"
+            class="btn btn-primary mr-3"
+          >Edit</router-link>
+        </template>
 
         <form action="/following/3?_method=DELETE" method="POST" style="display: contents;">
-          <button v-if="isFollowed" type="submit" class="btn btn-danger" @click.stop.prevent="deleteFollow">取消追蹤</button>
+          <button
+            v-if="isFollowed"
+            type="submit"
+            class="btn btn-danger"
+            @click.stop.prevent="deleteFollow"
+          >取消追蹤</button>
           <button v-else type="submit" class="btn btn-primary" @click.stop.prevent="addFollow">追蹤</button>
         </form>
       </div>
@@ -42,18 +53,18 @@ export default {
       type: Boolean
     }
   },
-  data () {
+  data() {
     return {
       isFollowed: this.initialIsFollowed
-    }
+    };
   },
   methods: {
-    addFollow () {
-      this.isFollowed = true
+    addFollow() {
+      this.isFollowed = true;
     },
-    deleteFollow () {
-      this.isFollowed = false
+    deleteFollow() {
+      this.isFollowed = false;
     }
   }
-}
+};
 </script>
