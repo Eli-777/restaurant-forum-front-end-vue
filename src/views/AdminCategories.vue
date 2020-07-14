@@ -162,7 +162,7 @@ export default {
         return category
       })
     },
-    updateCategory ({ categoryId, name}) {
+    updateCategory ({ categoryId}) {
       // TODO: 透過 API 去向伺服器更新餐廳類別名稱
       this.toggleIsEditing(categoryId)
     },
