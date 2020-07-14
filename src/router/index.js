@@ -12,7 +12,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'root',
-    redirect: '/singin'
+    redirect: '/signin'
   },
   {
     path: '/signin',
