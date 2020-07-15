@@ -39,6 +39,7 @@
       <button
         class="btn btn-lg btn-primary btn-block mb-3"
         type="submit"
+        :disabled="isProcessing"
       >
         Submit
       </button>
@@ -66,7 +67,8 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      isProcessing: false
     }
   },
   methods: {
@@ -79,6 +81,10 @@ export default {
           title: '請填入 email 和 password'
         })
       }
+
+      // 送出表單使按鈕無法再次點擊
+      this.isProcessing = true
+
       // 使用認證 API 回傳出來的signIn function，帶入輸入資訊
       authorizationAPI.signIn({
         email: this.email,
@@ -102,6 +108,8 @@ export default {
           icon: 'warning',
           title: '請確認您輸入了正確的帳號密碼'
         })
+        // 因為登入失敗，所以要把按鈕狀態還原
+        this.isProcessing = false
         console.log('error', error)
       })
     }
