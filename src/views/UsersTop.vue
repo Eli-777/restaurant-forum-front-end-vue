@@ -69,6 +69,7 @@ export default {
         this.users.forEach( user => {
           if(user.id === userId) {
             user.isFollowed = true;
+            user.FollowerCount = user.FollowerCount +1
           } else {
             return user
           }
@@ -91,6 +92,7 @@ export default {
         this.users.map( user => {
           if(user.id === userId) {
             user.isFollowed = false;
+            user.FollowerCount = user.FollowerCount -1
           } else {
             return user
           }
