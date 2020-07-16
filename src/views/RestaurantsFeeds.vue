@@ -52,8 +52,8 @@ export default {
         const { restaurants, comments } = response.data
         this.restaurants = restaurants
         this.comments = comments
-        console.log('response',response)
       } catch (error) {
+        console.log('error', error)
         Toast.fire({
           icon: 'error',
           title: '無法取得餐廳資料，請稍後再試'
