@@ -157,7 +157,7 @@ export default {
       try {
         const { data } = await adminAPI.categories.get()
 
-        // if (data.status !== 'success'){
+        // if (data.status !== 'success') {
         //   throw new Error(data.message)
         // }
         
