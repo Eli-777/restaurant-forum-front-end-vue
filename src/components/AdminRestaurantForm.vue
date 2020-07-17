@@ -164,6 +164,7 @@ export default {
     async fetchCategories() {
       try {
         const { data } = await adminAPI.categories.get()
+        console.log('data = ', data)
 
         // if (data.status !== 'success') {
         //   throw new Error(data.message)
